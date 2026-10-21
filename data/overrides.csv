@@ -1,0 +1,9 @@
+# Hand-set values, applied last by `just fidelity` (any table column; matched on film_title and,
+# when given, source_title or one of its aliases). Disputed fidelity is set only here.
+film_title,source_title,field,value,note
+Saturday Night Fever,,adaptation_fidelity,disputed,Nik Cohn said in 1996 that the New York story's characters were invented
+Bloodsport,,adaptation_fidelity,disputed,Frank Dux's account of the kumite has been contested since the 1980s
+Blackhawk Down,,wikipedia_url,https://en.wikipedia.org/wiki/Black_Hawk_Down_(film),the seed misspells the title; Wikipedia search lands on a disambiguation page
+Landman,,review_flags,origin-contested,Texas Monthly (June 2023) says Landman is based on Christian Wallace's article and the Boomtown podcast; the curated TV list calls it podcast-only
+Land Man,,film_title,Landman,"working title in Texas Monthly's June 2023 piece; premiered as Landman (2024)"
+Dark Waters,,publication,The New York Times Magazine,"the seed says New York Times; Nathaniel Rich's piece ran in the Magazine"

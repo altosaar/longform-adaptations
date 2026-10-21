@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+raw/
+baml_sdk/
+.DS_Store
+dist/
+.wrangler/

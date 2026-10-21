@@ -1,0 +1,142 @@
+{
+  "version": "v0.1",
+  "date": "2026-10-20",
+  "gold_rows": 50,
+  "matched": 50,
+  "verified": 0,
+  "fields": {
+    "origin_type": {
+      "n": 50,
+      "correct": 48,
+      "verified_n": 0,
+      "verified_correct": 0,
+      "accuracy": 0.96,
+      "verified_accuracy": null
+    },
+    "publication_scope": {
+      "n": 46,
+      "correct": 46,
+      "verified_n": 0,
+      "verified_correct": 0,
+      "accuracy": 1.0,
+      "verified_accuracy": null
+    },
+    "medium": {
+      "n": 50,
+      "correct": 50,
+      "verified_n": 0,
+      "verified_correct": 0,
+      "accuracy": 1.0,
+      "verified_accuracy": null
+    },
+    "adaptation_fidelity": {
+      "n": 50,
+      "correct": 37,
+      "verified_n": 0,
+      "verified_correct": 0,
+      "accuracy": 0.74,
+      "verified_accuracy": null
+    },
+    "film_year": {
+      "n": 50,
+      "correct": 50,
+      "verified_n": 0,
+      "verified_correct": 0,
+      "accuracy": 1.0,
+      "verified_accuracy": null
+    }
+  },
+  "unmatched": [],
+  "misses": [
+    {
+      "film": "Spotlight",
+      "field": "adaptation_fidelity",
+      "gold": "inspired_by",
+      "got": "direct"
+    },
+    {
+      "film": "Pain and Gain",
+      "field": "adaptation_fidelity",
+      "gold": "direct",
+      "got": "loose"
+    },
+    {
+      "film": "Hit Man",
+      "field": "adaptation_fidelity",
+      "gold": "direct",
+      "got": "loose"
+    },
+    {
+      "film": "Adaptation",
+      "field": "adaptation_fidelity",
+      "gold": "loose",
+      "got": "direct"
+    },
+    {
+      "film": "Hustlers",
+      "field": "adaptation_fidelity",
+      "gold": "direct",
+      "got": "loose"
+    },
+    {
+      "film": "Blue Crush",
+      "field": "adaptation_fidelity",
+      "gold": "loose",
+      "got": "direct"
+    },
+    {
+      "film": "Almost Famous",
+      "field": "adaptation_fidelity",
+      "gold": "inspired_by",
+      "got": "direct"
+    },
+    {
+      "film": "Top Gun",
+      "field": "adaptation_fidelity",
+      "gold": "direct",
+      "got": "inspired_by"
+    },
+    {
+      "film": "A Beautiful Day in the Neighborhood",
+      "field": "adaptation_fidelity",
+      "gold": "direct",
+      "got": "loose"
+    },
+    {
+      "film": "Biker Boyz",
+      "field": "origin_type",
+      "gold": "news_article",
+      "got": "magazine_feature"
+    },
+    {
+      "film": "Star 80",
+      "field": "origin_type",
+      "gold": "news_article",
+      "got": "magazine_feature"
+    },
+    {
+      "film": "Call Northside 777",
+      "field": "adaptation_fidelity",
+      "gold": "direct",
+      "got": "inspired_by"
+    },
+    {
+      "film": "Inventing Anna",
+      "field": "adaptation_fidelity",
+      "gold": "direct",
+      "got": "inspired_by"
+    },
+    {
+      "film": "Unbelievable",
+      "field": "adaptation_fidelity",
+      "gold": "direct",
+      "got": "loose"
+    },
+    {
+      "film": "Landman",
+      "field": "adaptation_fidelity",
+      "gold": "direct",
+      "got": "inspired_by"
+    }
+  ]
+}

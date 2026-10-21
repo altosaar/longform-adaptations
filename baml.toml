@@ -1,0 +1,12 @@
+[package]
+name = "longhorns"
+
+# Python bridge: `baml generate` writes the typed `baml_sdk` package to the repo root.
+# Gitignored (~7 MB); re-run `just generate` whenever baml_src/*.baml changes.
+[generator.python]
+output_type = "python/pydantic"
+output_dir = "."
+naming_convention = "preserve-case"
+
+[toolchain]
+version = "0.17.0"

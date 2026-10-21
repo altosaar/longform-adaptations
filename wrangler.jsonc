@@ -1,0 +1,6 @@
+// Cloudflare Pages: the review page (dist/), published to longformadaptations.pages.dev by `just publish`.
+{
+  "name": "longformadaptations",
+  "pages_build_output_dir": "./dist",
+  "compatibility_date": "2026-10-15"
+}

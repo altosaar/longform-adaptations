@@ -1,0 +1,105 @@
+# Publications lookup (Addendum 2 #2). publication_scope comes from this table, not the model.
+# Joined on canonical_name or any alias, case- and punctuation-insensitive. Haiku suggests a
+# scope only for outlets missing here; its answer goes to the review queue until a row is added.
+#
+# Scope decisions (v0.1, 2026-10-20):
+# - City or state magazines with national circulation (New York, Los Angeles, Washingtonian,
+#   Texas Monthly) -> regional. This supersedes the v0 call that New York was local.
+# - Big-city metro dailies (Los Angeles Times, Chicago Tribune, The Boston Globe) and town
+#   papers -> local. National dailies (NYT, Washington Post, WSJ) -> national.
+# - Alt-weeklies -> alt_weekly. Nonprofit and digital-native newsrooms -> online_only.
+# - A city paper's Sunday magazine takes the paper's scope (Los Angeles Times Magazine -> local).
+# domains: the outlet's own web domains (pipe-separated); search-found URLs must be on one of
+# these or on an archive domain (Addendum 2 #8).
+canonical_name,aliases,scope,city,country,kind,domains,notes
+The New Yorker,New Yorker,national,New York,US,magazine,newyorker.com,
+The New York Times Magazine,New York Times Magazine|NYT Magazine|NYT Mag,national,New York,US,magazine,nytimes.com,
+The New York Times,New York Times|NYT|NY Times,national,New York,US,daily,nytimes.com,
+The Washington Post,Washington Post,national,Washington,US,daily,washingtonpost.com,
+The Wall Street Journal,Wall Street Journal|WSJ,national,New York,US,daily,wsj.com,
+USA Today,,national,McLean,US,daily,usatoday.com,
+Esquire,Esquire Magazine,national,New York,US,magazine,esquire.com|classic.esquire.com,
+Rolling Stone,,national,New York,US,magazine,rollingstone.com,
+GQ,Gentlemen's Quarterly,national,New York,US,magazine,gq.com,
+Vanity Fair,,national,New York,US,magazine,vanityfair.com|archive.vanityfair.com,
+Wired,WIRED,national,San Francisco,US,magazine,wired.com|archive.wired.com,
+Outside,Outside Magazine|Women Outside|Outside Online,national,Santa Fe,US,magazine,outsideonline.com,
+Sports Illustrated,SI,national,New York,US,magazine,si.com|vault.si.com,
+The Atlantic,Atlantic|The Atlantic Monthly|Atlantic Monthly,national,Washington,US,magazine,theatlantic.com,
+Harper's Magazine,Harper's,national,New York,US,magazine,harpers.org,
+Time,Time Magazine,national,New York,US,magazine,time.com,
+Newsweek,,national,New York,US,magazine,newsweek.com,
+Life,LIFE|LIFE Magazine|Life Magazine,national,New York,US,magazine,,
+Playboy,,national,Chicago,US,magazine,playboy.com,
+Penthouse,,national,New York,US,magazine,,
+Cosmopolitan,,national,New York,US,magazine,cosmopolitan.com,
+McCall's,McCalls,national,New York,US,magazine,,
+Collier's,Colliers|Collier's Weekly,national,New York,US,magazine,,
+Liberty,Liberty Magazine,national,New York,US,magazine,,
+True Magazine,True,national,New York,US,magazine,,men's adventure magazine
+Cavalier,,national,New York,US,magazine,,men's magazine
+Details,,national,New York,US,magazine,,
+Vibe,,national,New York,US,magazine,vibe.com,
+National Lampoon,,national,New York,US,magazine,,
+American Heritage,,national,New York,US,magazine,americanheritage.com,
+The Sun,The Sun Magazine|Sun Magazine,national,Chapel Hill,US,magazine,thesunmagazine.org,
+Mother Jones,,national,San Francisco,US,magazine,motherjones.com,
+Fantastic Universe,,national,New York,US,magazine,,science-fiction magazine
+If,If Magazine|Worlds of If,national,New York,US,magazine,,science-fiction magazine
+Imagination,,national,Evanston,US,magazine,,science-fiction magazine
+Orbit Science Fiction,Orbit,national,New York,US,magazine,,science-fiction magazine
+Super Science Stories,Super Science Stories / Astounding Science Fiction,national,New York,US,magazine,,science-fiction magazine
+Astounding Science Fiction,Astounding,national,New York,US,magazine,,science-fiction magazine
+The Magazine of Fantasy & Science Fiction,Fantasy & Science Fiction|F&SF,national,New York,US,magazine,sfsite.com,science-fiction magazine
+Lilliput,,national,London,UK,magazine,,
+The Guardian,Guardian,national,London,UK,daily,theguardian.com,
+Respekt,,national,Prague,CZ,magazine,respekt.cz,
+Slate,,online_only,New York,US,online,slate.com,
+HuffPost,Huffington Post|HuffPost Highline|Highline,online_only,New York,US,online,huffpost.com|huffingtonpost.com|highline.huffingtonpost.com,
+BuzzFeed News,BuzzFeed,online_only,New York,US,online,buzzfeednews.com|buzzfeed.com,
+ProPublica,ProPublica / The Marshall Project,online_only,New York,US,online,propublica.org,nonprofit newsroom
+The Marshall Project,Marshall Project,online_only,New York,US,online,themarshallproject.org,nonprofit newsroom
+Epic Magazine,Epic,online_only,Los Angeles,US,online,epicmagazine.com|epic.ly,
+The Atavist Magazine,Atavist|The Atavist,online_only,New York,US,online,magazine.atavist.com|atavist.com,
+ABC News,,national,New York,US,online,abcnews.go.com,broadcast network news
+The Hollywood Reporter,Hollywood Reporter|THR,trade,Los Angeles,US,trade,hollywoodreporter.com,
+Variety,,trade,Los Angeles,US,trade,variety.com,
+Deadline,Deadline Hollywood,trade,Los Angeles,US,trade,deadline.com,
+Associated Press,AP,wire,New York,US,wire,apnews.com,
+Reuters,,wire,London,UK,wire,reuters.com,
+New York,New York (magazine)|New York Magazine|New York magazine|New York Magazine (The Cut)|New York (The Cut)|New York / The Cut|The Cut|nymag,regional,New York,US,magazine,nymag.com|thecut.com,city magazine with national circulation
+Los Angeles Magazine,LA Magazine,regional,Los Angeles,US,magazine,lamag.com,city magazine
+Washingtonian,Washingtonian Magazine,regional,Washington,US,magazine,washingtonian.com,city magazine
+Texas Monthly,,regional,Austin,US,magazine,texasmonthly.com,state magazine
+California Magazine,California|New West,regional,Los Angeles,US,magazine,,state magazine (1976-1991)
+Chicago Magazine,,regional,Chicago,US,magazine,chicagomag.com,city magazine
+D Magazine,D,regional,Dallas,US,magazine,dmagazine.com,city magazine
+Los Angeles Times,LA Times|L.A. Times,local,Los Angeles,US,daily,latimes.com,metro daily
+Los Angeles Times Magazine,LA Times Magazine,local,Los Angeles,US,magazine,latimes.com,the paper's Sunday magazine
+Chicago Tribune,,local,Chicago,US,daily,chicagotribune.com,metro daily
+The Boston Globe,Boston Globe,local,Boston,US,daily,bostonglobe.com|www3.bostonglobe.com,metro daily
+The Dallas Morning News,Dallas Morning News,local,Dallas,US,daily,dallasnews.com,metro daily
+The Philadelphia Inquirer,Philadelphia Inquirer,local,Philadelphia,US,daily,inquirer.com|philly.com,metro daily
+San Jose Mercury News,Mercury News|The Mercury News,local,San Jose,US,daily,mercurynews.com,metro daily
+San Francisco Examiner,SF Examiner,local,San Francisco,US,daily,sfexaminer.com,
+San Francisco Chronicle,SF Chronicle,local,San Francisco,US,daily,sfchronicle.com,
+New York Sun,The New York Sun|The Sun (New York),local,New York,US,daily,nysun.com,
+Chicago Times,Chicago Daily Times,local,Chicago,US,daily,,defunct (1929-1948)
+New York Daily News,Daily News,local,New York,US,daily,nydailynews.com,
+Miami Herald,,local,Miami,US,daily,miamiherald.com,
+Houston Chronicle,,local,Houston,US,daily,houstonchronicle.com,
+The Seattle Times,Seattle Times,local,Seattle,US,daily,seattletimes.com,
+Detroit Free Press,,local,Detroit,US,daily,freep.com,
+The Arizona Republic,Arizona Republic,local,Phoenix,US,daily,azcentral.com,
+Anchorage Daily News,Anchorage Daily News / ProPublica|ADN,local,Anchorage,US,daily,adn.com,
+The Union Leader,Union Leader|New Hampshire Union Leader,local,Manchester,US,daily,unionleader.com,
+Miami New Times,,alt_weekly,Miami,US,weekly,miaminewtimes.com,
+New Times Los Angeles,New Times LA,alt_weekly,Los Angeles,US,weekly,,defunct (1996-2002)
+The Village Voice,Village Voice,alt_weekly,New York,US,weekly,villagevoice.com,
+LA Weekly,,alt_weekly,Los Angeles,US,weekly,laweekly.com,
+Chicago Reader,,alt_weekly,Chicago,US,weekly,chicagoreader.com,
+Phoenix New Times,,alt_weekly,Phoenix,US,weekly,phoenixnewtimes.com,
+Houston Press,,alt_weekly,Houston,US,weekly,houstonpress.com,
+Dallas Observer,,alt_weekly,Dallas,US,weekly,dallasobserver.com,
+Westword,,alt_weekly,Denver,US,weekly,westword.com,
+SF Weekly,,alt_weekly,San Francisco,US,weekly,sfweekly.com,

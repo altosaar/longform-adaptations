@@ -1,0 +1,57 @@
+# Gold set (Addendum 2 #6): the expected value of each field, per (film, source).
+# Status: DRAFTED by Claude from general knowledge on 2026-10-20, written independently of the
+# pipeline's outputs, and NOT yet hand-verified. Set verified_by to your initials once you've
+# checked a row; `just eval` reports accuracy over all rows and over verified rows separately.
+# Fields: origin_type (journalism type or book/short_fiction/podcast_or_other), publication_scope
+# (per data/publications.csv decisions), medium, adaptation_fidelity, film_year. Blank = not graded.
+film_title,source_title,origin_type,publication_scope,medium,adaptation_fidelity,film_year,verified_by,notes
+Argo,How the CIA Used a Fake Sci-Fi Flick to Rescue Americans From Tehran,magazine_feature,national,film,direct,2012,,Wired 2007; credited alongside Mendez's memoir
+Argo,The Master of Disguise,book,,film,direct,2012,,Mendez memoir; second credited source
+Spotlight,Church Allowed Abuse by Priest for Years,news_article,local,film,inspired_by,2015,,original screenplay about the Globe's reporting; no 'based on' credit
+Pain and Gain,,news_article,alt_weekly,film,direct,2013,,Pete Collins' Miami New Times series
+Bernie,Midnight in the Garden of East Texas,magazine_feature,regional,film,direct,2011,,Texas Monthly 1998
+Tower,96 Minutes,magazine_feature,regional,film,direct,2016,,Texas Monthly 2006; documentary film
+Hit Man,Hit Man,magazine_feature,regional,film,direct,2023,,Skip Hollandsworth, Texas Monthly 2001
+Dallas Buyers Club,,news_article,local,film,inspired_by,2013,,Minutaglio's 1992 DMN story is background, not a screen credit
+Kill the Messenger,Dark Alliance,news_article,local,film,direct,2014,,San Jose Mercury News 1996 series (film credits Webb's book and Schou's book)
+Into the Wild,Death of an Innocent,magazine_feature,national,film,direct,2007,,Outside 1993 → Krakauer's 1996 book (credited)
+Adaptation,Orchid Fever,magazine_feature,national,film,loose,2002,,New Yorker 1995 → The Orchid Thief (credited); heavily fictionalized
+The Insider,The Man Who Knew Too Much,magazine_feature,national,film,direct,1999,,Vanity Fair 1996
+Saturday Night Fever,Tribal Rites of the New Saturday Night,magazine_feature,regional,film,disputed,1977,,New York 1976; Cohn later admitted invention
+Shattered Glass,Shattered Glass,magazine_feature,national,film,direct,2003,,Vanity Fair 1998
+The Bling Ring,The Suspects Wore Louboutins,magazine_feature,national,film,direct,2013,,Vanity Fair 2010
+Hustlers,The Hustlers at Scores,magazine_feature,regional,film,direct,2019,,New York (The Cut) 2015
+Boogie Nights,The Devil and John Holmes,magazine_feature,national,film,inspired_by,1997,,Rolling Stone 1989; not credited on screen
+The Fast and the Furious,Racer X,magazine_feature,national,film,direct,2001,,Vibe 1998
+Coyote Ugly,The Muse of the Coyote Ugly Saloon,magazine_feature,national,film,loose,2000,,GQ 1997
+Blue Crush,Life's Swell,magazine_feature,national,film,loose,2002,,Outside (Women Outside) 1998
+American Gangster,The Return of Superfly,magazine_feature,regional,film,direct,2007,,New York 2000
+Bad Education,The Bad Superintendent,magazine_feature,regional,film,direct,2019,,New York 2004
+Dog Day Afternoon,The Boys in the Bank,magazine_feature,national,film,direct,1975,,Life 1972
+Urban Cowboy,The Ballad of the Urban Cowboy: America's Search for True Grit,magazine_feature,national,film,direct,1980,,Esquire 1978
+The Perfect Storm,The Storm,magazine_feature,national,film,direct,2000,,Outside 1994 → Junger's book (credited)
+Almost Famous,The Allman Brothers Story,magazine_feature,national,film,inspired_by,2000,,Crowe's own Rolling Stone experience; original screenplay
+Top Gun,Top Guns,magazine_feature,regional,film,direct,1986,,California magazine 1983
+A Beautiful Day in the Neighborhood,Can You Say...Hero?,magazine_feature,national,film,direct,2019,,Esquire 1998
+Dark Waters,The Lawyer Who Became DuPont's Worst Nightmare,magazine_feature,national,film,direct,2019,,NYT Magazine 2016
+War Dogs,The Stoner Arms Dealers: How Two American Kids Became Big-Time Weapons Traders,magazine_feature,national,film,direct,2016,,Rolling Stone 2011 (also credits Lawson's book)
+Only the Brave,No Exit,magazine_feature,national,film,direct,2017,,GQ 2013
+The Killing Fields,The Death and Life of Dith Pran,magazine_feature,national,film,direct,1984,,NYT Magazine 1980
+Biker Boyz,Biker Boyz,news_article,alt_weekly,film,direct,2003,,New Times Los Angeles 2000
+Something the Lord Made,Like Something the Lord Made,magazine_feature,regional,tv_movie,direct,2004,,Washingtonian 1989; HBO film
+Resurrecting the Champ,Resurrecting the Champ,magazine_feature,local,film,direct,2007,,Los Angeles Times Magazine 1997
+Star 80,Death of a Playmate,news_article,alt_weekly,film,direct,1983,,Village Voice 1980
+On the Waterfront,Crime on the Waterfront,news_article,local,film,inspired_by,1954,,New York Sun 1948 series; story by Schulberg
+Call Northside 777,,news_article,local,film,direct,1948,,Chicago Times reporting by James McGuire
+Black Hawk Down,,news_article,local,film,direct,2001,,Bowden's 1997 Philadelphia Inquirer series → book (credited)
+Infinite Storm,High Places: Footprints in the Snow Lead to an Emotional Rescue,news_article,local,film,direct,2022,,The Union Leader 2019 column by Ty Gagne
+Inventing Anna,Maybe She Had So Much Money She Just Lost Track of It,magazine_feature,regional,scripted_series,direct,2022,,New York (The Cut) 2018
+Unbelievable,An Unbelievable Story of Rape,news_article,online_only,scripted_series,direct,2019,,ProPublica / The Marshall Project 2015
+Alaska Daily,Lawless,news_article,local,scripted_series,inspired_by,2022,,Anchorage Daily News / ProPublica 2019; fictionalized newsroom
+Love & Death,Love and Death in Silicon Prairie,magazine_feature,regional,scripted_series,direct,2023,,Texas Monthly 1984
+Dirty John,Dirty John,news_article,local,scripted_series,direct,2018,,LA Times 2017 series and podcast
+Tiger King,,magazine_feature,regional,docuseries,inspired_by,2020,,parallel to Moor's New York piece; not credited
+Landman,Boomtown,podcast_or_other,,scripted_series,direct,2024,,Texas Monthly podcast; negative example
+Dopesick,Dopesick,book,,scripted_series,direct,2021,,book; negative example
+WeCrashed,WeCrashed,podcast_or_other,,scripted_series,direct,2022,,Wondery podcast; negative example
+Paycheck,,short_fiction,national,film,loose,2003,,Philip K. Dick story (Imagination, 1953); negative example

@@ -1,0 +1,18 @@
+film_title,film_year,source_title,source_author,publication,publication_normalized,source_date,source_url,source_url_origin,archive_url,archive_status,wikipedia_url,wikidata_qid,imdb_id,imdb_rating,rt_score,box_office_usd,box_office_note,medium,source_chain,source_type,publication_scope,adaptation_fidelity,classify_confidence,classify_notes,status,reviewed,seed_context
+Inventing Anna,2022,Maybe She Had So Much Money She Just Lost Track of It,Jessica Pressler,New York (The Cut),,2018-05-28,,,,,,,,,,,,scripted_series,article → series,,,,,,,,
+Dirty John,2018,Dirty John,Christopher Goffard,Los Angeles Times,,2017,,,,,,,,,,,,scripted_series,article → podcast → series,news_article,,direct,,,,,"Six-part Los Angeles Times series, released alongside an LA Times/Wondery podcast."
+The Girl From Plainville,2022,,Jesse Barron,Esquire,,2017,,,,,,,,,,,,scripted_series,article → series,,,,,,,,
+Pam & Tommy,2022,,Amanda Chicago Lewis,Rolling Stone,,2014,,,,,,,,,,,,scripted_series,article → series,,,,,,,,
+Angelyne,2022,,Gary Baum,The Hollywood Reporter,,2017,,,,,,,,,,,,scripted_series,article → series,,,,,,,,
+The Act,2019,"Dee Dee Wanted Her Daughter To Be Sick, Gypsy Wanted Her Mom To Be Murdered",Michelle Dean,BuzzFeed News,,2016,,,,,,,,,,,,scripted_series,article → series,,,,,,,,
+Unbelievable,2019,An Unbelievable Story of Rape,T. Christian Miller and Ken Armstrong,ProPublica / The Marshall Project,,2015-12,,,,,,,,,,,,scripted_series,article → series,,,,,,,,Nonprofit newsroom collaboration (ProPublica and The Marshall Project).
+Alaska Daily,2022,Lawless,,Anchorage Daily News / ProPublica,,2019,,,,,,,,,,,,scripted_series,article → series (fictionalized),,,,,,,,Local paper + nonprofit newsroom investigative series on rural Alaska law enforcement; the show fictionalizes it.
+Love & Death,2023,Love and Death in Silicon Prairie,Jim Atkinson and John Bloom,Texas Monthly,,1984,,,,,,,,,,,,scripted_series,article → series,,,,,,,,
+Joe vs. Carole,2022,American Animals,Robert Moor,New York,,2019-09,,,,,,,,,,,,scripted_series,article → podcast → series,,,,,,,,"Article became the Wondery podcast Joe Exotic: Tiger King, which the series adapts. Headline as given by the curator; verify."
+Tiger King,2020,American Animals,Robert Moor,New York,,2019-09,,,,,,,,,,,,docuseries,article (parallel),,,inspired_by,,,,,Netflix docuseries made in parallel; does not credit the article. Same source as Joe vs. Carole.
+The Watcher,2022,,Reeves Wiedeman,New York (The Cut),,2018,,,,,,,,,,,,scripted_series,article → series,,,,,,,,
+Little America,2020,,,Epic Magazine,,2018,,,,,,,,,,,,scripted_series,article → anthology,,,,,,,,Anthology series; each episode adapts a true story published by Epic Magazine.
+Landman,2024,Boomtown,Christian Wallace,Texas Monthly,,2019,,,,,,,,,,,,scripted_series,podcast → series,podcast_or_other,,,,,,,"Source is a podcast (Boomtown, Texas Monthly) adapted into a TV series; no print article found. Negative example."
+Dopesick,2021,Dopesick,Beth Macy,,,2018,,,,,,,,,,,,scripted_series,book → series,book,,,,,,,Negative example: adapted from a nonfiction book.
+WeCrashed,2022,WeCrashed,,Wondery,,2020,,,,,,,,,,,,scripted_series,podcast → series,podcast_or_other,,,,,,,"Source is a podcast (WeCrashed, Wondery) adapted into a TV series. Negative example."
+Super Pumped,2022,Super Pumped: The Battle for Uber,Mike Isaac,,,2019,,,,,,,,,,,,scripted_series,book → series,book,,,,,,,Negative example: adapted from a nonfiction book.
