@@ -509,7 +509,7 @@ a:hover, a:focus-visible, .tabs a:hover, .tabs a:focus-visible, .menu a:hover, .
 <nav class="menu" id="menu" aria-label="Menu"><a href="#articles" data-tab="articles">Articles</a><a href="#sources" data-tab="sources">Sources</a><a href="https://github.com/altosaar/longform-adaptations/">GitHub</a><button class="theme-toggle" type="button" aria-pressed="false">Dark</button></nav>
 <main>
 <section id="tab-articles" class="tab">
-<p class="dek intro">This list collects films and TV series adapted from (often longform) journalism: newspaper stories, magazine features, columns and essays, plus a few short stories. Each entry links the original article and an archived copy, then the adaptation's pages on Wikipedia, IMDb and Rotten Tomatoes. An adaptation counts as journalism when its story first ran in a newspaper or magazine, even if the credits name a later book.</p>
+<p class="dek intro">This list collects films and TV series adapted from (often longform) journalism: newspaper stories, magazine features, columns and essays. Each entry links the original article and an archived copy, then the adaptation's pages on Wikipedia, IMDb and Rotten Tomatoes. An adaptation counts as journalism when its story first ran in a newspaper or magazine, even if the credits name a later book. Anything missing? Email me: <a href="mailto:j@jaan.io">j@jaan.io</a> :)</p>
 <div class="controls">
 <input type="search" placeholder="Filter: film, headline, author, outlet, note…" aria-label="Filter rows">
 <span class="count" aria-live="polite">{shown} articles</span>
