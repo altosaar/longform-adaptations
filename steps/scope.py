@@ -5,15 +5,21 @@ magazine features); the model's call stands only for columns and for weeklies/on
 Rows whose outlet is in the table get its scope and canonical name. Rows whose outlet isn't
 get no scope: the classifier's guess (scope_suggestion) goes to data/outlet_queue.csv, and the
 row is flagged, until a human adds the outlet to the table and re-runs this step.
+
+A blank source date is filled from a dated article URL (nytimes.com/2003/03/30/magazine/…).
+data/overrides.csv is applied first, so a hand-set outlet gets its scope in the same run.
 """
 
 from __future__ import annotations
 
 import csv
 import logging
+import re
 from collections import defaultdict
+from urllib.parse import urlsplit
 
 import db
+import overrides
 import publications
 from steps import cli
 
@@ -22,6 +28,12 @@ QUEUE = db.ROOT / "data" / "outlet_queue.csv"
 FLAG = "outlet-not-in-table"
 MISSING = "outlet-missing"
 _PLACEHOLDERS = {"unknown", "none", "n a", "not stated", "unspecified"}
+_URL_DATE = re.compile(r"/((?:19|20)\d\d)/(0[1-9]|1[0-2])/(0[1-9]|[12]\d|3[01])/")
+
+
+def url_date(url: str | None) -> str | None:
+    m = _URL_DATE.search(urlsplit(url).path) if url else None
+    return "-".join(m.groups()) if m else None
 
 
 def subtype(model_type: str, kind: str) -> str:
@@ -36,11 +48,15 @@ def subtype(model_type: str, kind: str) -> str:
 def main() -> None:
     cli(__doc__)
     con = db.connect()
-    known = unknown = 0
+    overrides.apply(con)
+    known = unknown = dated = 0
     queue: dict[str, dict] = defaultdict(lambda: {"rows": 0, "films": [], "suggestions": defaultdict(int)})
     for r in db.rows(con):
         if r["reviewed"]:
             continue
+        if not r["source_date"] and (d := url_date(r["source_url"])):
+            con.execute("UPDATE adaptations SET source_date = ? WHERE id = ?", (d, r["id"]))
+            dated += 1
         pub = publications.lookup(r["publication"], r["publication_normalized"])
         db.drop_flag(con, r["id"], FLAG)
         db.drop_flag(con, r["id"], MISSING)
@@ -75,8 +91,8 @@ def main() -> None:
         for name, q in sorted(queue.items(), key=lambda kv: (-kv[1]["rows"], kv[0])):
             best = max(q["suggestions"].items(), key=lambda kv: kv[1])[0]
             w.writerow([name, q["rows"], best, " | ".join(q["films"][:5])])
-    log.info("scope from the table for %d rows; %d journalism rows wait on %d outlets (%s)",
-             known, unknown, len(queue), QUEUE.relative_to(db.ROOT))
+    log.info("scope from the table for %d rows; %d journalism rows wait on %d outlets (%s); %d dates from URLs",
+             known, unknown, len(queue), QUEUE.relative_to(db.ROOT), dated)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,37 @@
+# A push to main is a deploy. The page's inputs (longhorns.sqlite, data/, eval.json) are
+# committed, so a checkout has everything `just publish` needs: collecting, enriching and
+# classifying stay on a laptop (they need .env and raw/), exporting and shipping happen here.
+name: deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# A newer commit waits for the running deploy rather than racing it to Cloudflare; a
+# half-killed `wrangler pages deploy` is worse than a wasted minute.
+concurrency:
+  group: deploy
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.3.0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - uses: extractions/setup-just@v4
+      - run: uv sync
+      # pytest only: `baml test` calls the model, and the export needs no BAML client.
+      - run: uv run pytest -q
+      # The same command a laptop runs: export, then deploy. Any failure publishes nothing
+      # and Cloudflare keeps the last good deploy.
+      - run: just publish
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

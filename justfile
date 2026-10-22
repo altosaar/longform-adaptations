@@ -107,6 +107,7 @@ lint:
 publish: export
     rm -rf dist && mkdir -p dist/data/v0.1
     cp adaptations.html dist/index.html
+    sed 's/currentColor/black/' assets/icon.svg > dist/icon.svg
     cp adaptations.csv dist/adaptations.csv
     for d in dist/data dist/data/v0.1; do cp adaptations.csv data/publications.csv data/gold.csv eval.json CHANGELOG.md $d/; done
     # --force: create a classic Pages project (pages.dev); newer wrangler otherwise makes a Worker

@@ -1,5 +1,26 @@
 # Changelog
 
+## Page — 2026-10-22
+
+- Renamed to **Longform Adaptations**. The page uses two text sizes (16/13px Inter), black and
+  white with a remembered dark mode, a mobile menu, and the Noun Project "document filming"
+  icon (redrawn heavier, square corners), which is also the favicon and the og:image.
+- **Articles** lists journalism, local / regional / alt-weekly and short-fiction rows (books,
+  podcasts and unsourced rows are in the CSV only). The columns are Article, Film Adaptation,
+  IMDb rating, IMDb votes, RT Critics Score, RT reviews and box office. Origin, credit, scope,
+  fidelity, chain, seeds, flags and the classifier note moved into an **AI Notes** popover.
+  Search is the only filter. Below 960px each row becomes a card, so nothing scrolls sideways.
+- **Default order: a score (/100).** IMDb rating and Tomatometer are each shrunk toward the
+  table mean by vote / review count (IMDb's weighted rating, m = median count), turned into
+  percentiles, and averaged with RT counted twice.
+- **Hand fixes.** Moneyball's article gets its outlet (NYT Magazine) by override, and blank
+  dates now come from dated article URLs. Sing Sing gets the Esquire URL (2024 republication of
+  the October 2005 piece). Two second-source rows were deleted by hand, each id redirected to the
+  kept row: Sing Sing / "Breakin' the Mummy's Code" (the play) and Live Free or Die Hard /
+  "Nothing Lasts Forever" (the 1979 novel behind the first Die Hard).
+- **Sources** (formerly Statistics) starts with a table of every seed list URL, with how many
+  rows each listed and how many of those are journalism.
+
 ## v0.1 — 2026-10-20
 
 Principle: the model never decides anything a table or Wikidata already knows. Lookups set

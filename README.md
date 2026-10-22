@@ -11,9 +11,12 @@ Scope comes from `data/publications.csv`, medium and year from Wikidata, fidelit
 wording, merges from titles and authors; Haiku fills blanks and explains chains.
 
 Outputs: `longhorns.sqlite` (table `adaptations`), `adaptations.csv`, `adaptations.html`
-(the review page, published to https://longformadaptations.pages.dev by `just publish`: an
-Articles tab with the sortable list, opening on journalism, local and short-fiction rows, and a Statistics tab
-at `/#stats`), and `eval.json`.
+(the review page at https://longformadaptations.pages.dev: an Articles tab listing journalism,
+local and short-fiction rows by score, and a Sources tab at `/#sources`), and `eval.json`.
+
+Deploys are automatic: every push to `main` runs `.github/workflows/deploy.yml`, which tests,
+re-exports the page from the committed `longhorns.sqlite` and deploys it (`just publish`). The
+pipeline itself runs on a laptop (it needs `.env` and `raw/`); commit its outputs to ship them.
 
 ## Run
 
@@ -21,7 +24,7 @@ at `/#stats`), and `eval.json`.
 just setup     # uv sync + baml generate
 just all       # the film seeds through every step (below)
 just tv        # the TV seeds through the same steps
-just publish   # export, then deploy the page and /data/ to Cloudflare Pages
+just publish   # export + deploy by hand (a push to main does this automatically)
 ```
 
 Every step is idempotent, fills only blank columns it owns (`--force` to overwrite; reviewed
