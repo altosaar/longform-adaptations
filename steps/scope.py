@@ -6,7 +6,8 @@ Rows whose outlet is in the table get its scope and canonical name. Rows whose o
 get no scope: the classifier's guess (scope_suggestion) goes to data/outlet_queue.csv, and the
 row is flagged, until a human adds the outlet to the table and re-runs this step.
 
-A blank source date is filled from a dated article URL (nytimes.com/2003/03/30/magazine/…).
+A blank or coarser source date (2003, 2003-03) is filled from a dated article URL
+(nytimes.com/2003/03/30/magazine/…) that agrees with it.
 data/overrides.csv is applied first, so a hand-set outlet gets its scope in the same run.
 """
 
@@ -54,7 +55,8 @@ def main() -> None:
     for r in db.rows(con):
         if r["reviewed"]:
             continue
-        if not r["source_date"] and (d := url_date(r["source_url"])):
+        d = url_date(r["source_url"])
+        if d and (not r["source_date"] or (len(r["source_date"]) < len(d) and d.startswith(r["source_date"]))):
             con.execute("UPDATE adaptations SET source_date = ? WHERE id = ?", (d, r["id"]))
             dated += 1
         pub = publications.lookup(r["publication"], r["publication_normalized"])
