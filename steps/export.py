@@ -377,9 +377,12 @@ try {{ if (localStorage.getItem("theme") === "dark") document.documentElement.da
 <meta property="og:description" content="{description}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{site}">
-<meta property="og:image" content="{site}icon.svg">
-<meta property="og:image:type" content="image/svg+xml">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="{site}og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="List of Longform Adaptations: films and TV series adapted from newspaper and magazine journalism">
+<meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{jsonld}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

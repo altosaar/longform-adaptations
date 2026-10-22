@@ -111,6 +111,7 @@ publish: export
     rm -rf dist && mkdir -p dist/data/v0.1
     cp adaptations.html dist/index.html
     sed 's/currentColor/black/' assets/icon.svg > dist/icon.svg
+    cp assets/og.png dist/og.png
     printf 'User-agent: *\nAllow: /\nSitemap: {{site}}sitemap.xml\n' > dist/robots.txt
     printf '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{{site}}</loc><lastmod>%s</lastmod></url></urlset>\n' "$(date +%F)" > dist/sitemap.xml
     cp adaptations.csv dist/adaptations.csv
