@@ -91,11 +91,11 @@ def unsourced(r: dict) -> bool:
 
 
 def listed_row(r: dict) -> bool:
-    """The Articles tab: journalism, local / regional / alt-weekly outlets and short fiction
-    (no books, podcasts or unsourced rows). All rows stay in the CSV and script#data."""
+    """The Articles tab: journalism and local / regional / alt-weekly outlets (no books, short
+    fiction, podcasts or unsourced rows). All rows stay in the CSV and script#data."""
     if unsourced(r):
         return False
-    return (r["origin_type"] in JOURNALISM or r["origin_type"] == "short_fiction"
+    return (r["origin_type"] in JOURNALISM
             or (r["publication_scope"] in LOCALISH and r["origin_type"] not in NEGATIVE))
 
 
@@ -522,7 +522,7 @@ a:hover, a:focus-visible, .tabs a:hover, .tabs a:focus-visible, .menu a:hover, .
 {rows}
 </tbody>
 </table>
-<p class="hint">Sorted by score: each title's IMDb rating and Tomatometer are first weighted by their vote and review counts (IMDb's weighted-rating formula, which pulls a score from few votes toward the table's mean), then turned into percentiles across the table and averaged with Rotten Tomatoes counted twice; a title with only one of the two takes that one. Click a column heading to sort; click again to reverse. Listed: journalism, local / regional / alt-weekly outlets and short fiction; books, podcasts and unsourced rows are only in the <a href="data/adaptations.csv">CSV</a>. * = article URL found by web search on the outlet's own domain. Italic rows are negatives (book, short fiction or podcast origin). AI Notes holds the classifier's origin, credit, scope and fidelity calls, the source chain, review flags and its note.</p>
+<p class="hint">Sorted by score: each title's IMDb rating and Tomatometer are first weighted by their vote and review counts (IMDb's weighted-rating formula, which pulls a score from few votes toward the table's mean), then turned into percentiles across the table and averaged with Rotten Tomatoes counted twice; a title with only one of the two takes that one. Click a column heading to sort; click again to reverse. Listed: journalism and local / regional / alt-weekly outlets; books, short fiction, podcasts and unsourced rows are only in the <a href="data/adaptations.csv">CSV</a>. * = article URL found by web search on the outlet's own domain. Italic rows are negatives (book, short fiction or podcast origin). AI Notes holds the classifier's origin, credit, scope and fidelity calls, the source chain, review flags and its note.</p>
 </section>
 
 <section id="tab-sources" class="tab">

@@ -11,8 +11,8 @@ Scope comes from `data/publications.csv`, medium and year from Wikidata, fidelit
 wording, merges from titles and authors; Haiku fills blanks and explains chains.
 
 Outputs: `longhorns.sqlite` (table `adaptations`), `adaptations.csv`, `adaptations.html`
-(the review page at https://longformadaptations.jaan.io, also longformadaptations.pages.dev: an Articles tab listing journalism,
-local and short-fiction rows by score, and a Sources tab at `/#sources`), and `eval.json`.
+(the review page at https://longformadaptations.jaan.io, also longformadaptations.pages.dev: an Articles tab listing journalism
+and local-outlet rows by score, and a Sources tab at `/#sources`), and `eval.json`.
 
 Deploys are automatic: every push to `main` runs `.github/workflows/deploy.yml`, which tests,
 re-exports the page from the committed `longhorns.sqlite` and deploys it (`just publish`). The
