@@ -321,7 +321,7 @@ def render(rows: list[dict]) -> str:
                                score.get(r["id"])) for i, r in enumerate(listed))
     records = [{k: r[k] for k in db.NAMES if k != "seed_context"} for r in rows]
     payload = json.dumps(records, ensure_ascii=False).replace("</", "<\\/")
-    favicon = "data:image/svg+xml," + ICON.replace("currentColor", "black").replace('"', "'").replace("#", "%23")
+    favicon = "data:image/svg+xml," + ICON.replace('"', "'").replace("#", "%23")
     jsonld = json.dumps({
         "@context": "https://schema.org", "@type": "Dataset", "name": "List of Longform Adaptations",
         "description": DESCRIPTION, "url": SITE, "dateModified": date.today().isoformat(),
@@ -388,8 +388,9 @@ try {{ if (localStorage.getItem("theme") === "dark") document.documentElement.da
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root, :root[data-theme="light"] {{ color-scheme: light; --ink: #000; --paper: #fff; }}
-:root[data-theme="dark"] {{ color-scheme: dark; --ink: #f2f2f2; --paper: #111; }}
+:root, :root[data-theme="light"] {{ color-scheme: light; --ink: #000; --paper: #fff; --icon-doc: #1b9955; --icon-cam: #df37e6; --icon-lens: #9a8600; }}
+/* Dark is jaan.io's palette (src/styles/tokens.css): --bg, --text, and the icon in --accent green, pink and yellow; light uses darker shades of those hues (3.6:1 on white) */
+:root[data-theme="dark"] {{ color-scheme: dark; --ink: #e2e2e2; --paper: #000; --icon-doc: #24cb71; --icon-cam: #e870ed; --icon-lens: #fbda00; }}
 :root {{ --m: 16px; --s: 13px; --rule: 2px solid var(--ink); --hair: 1px solid var(--ink); --nav-h: 52px; }}
 * {{ box-sizing: border-box; }}
 [hidden] {{ display: none !important; }}
@@ -444,6 +445,7 @@ sup {{ font-size: var(--s); line-height: 0; }}
 #tab-sources h2 {{ padding-bottom: 8px; border-bottom: var(--rule); margin-bottom: 8px; }}
 .dek {{ max-width: 70ch; }}
 .dek p + p {{ margin-top: 8px; }}
+.intro {{ margin-bottom: 16px; }}
 .stats {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px 24px; }}
 .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; }}
 .grid h3 {{ margin-bottom: 4px; }}
@@ -492,12 +494,13 @@ footer p + p {{ margin-top: 8px; }}
 <body>
 <header class="top">
 <a class="brand" href="#articles">{icon}<h1>Longform Adaptations</h1></a>
-<nav class="tabs" aria-label="Tabs"><a href="#articles" data-tab="articles">Articles</a><a href="#sources" data-tab="sources">Sources</a><button class="theme-toggle" type="button" aria-pressed="false">Dark</button></nav>
+<nav class="tabs" aria-label="Tabs"><a href="#articles" data-tab="articles">Articles</a><a href="#sources" data-tab="sources">Sources</a><a href="https://github.com/altosaar/longform-adaptations/">GitHub</a><button class="theme-toggle" type="button" aria-pressed="false">Dark</button></nav>
 <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span class="menu-icon" aria-hidden="true"><i></i><i></i></span></button>
 </header>
-<nav class="menu" id="menu" aria-label="Menu"><a href="#articles" data-tab="articles">Articles</a><a href="#sources" data-tab="sources">Sources</a><button class="theme-toggle" type="button" aria-pressed="false">Dark</button></nav>
+<nav class="menu" id="menu" aria-label="Menu"><a href="#articles" data-tab="articles">Articles</a><a href="#sources" data-tab="sources">Sources</a><a href="https://github.com/altosaar/longform-adaptations/">GitHub</a><button class="theme-toggle" type="button" aria-pressed="false">Dark</button></nav>
 <main>
 <section id="tab-articles" class="tab">
+<p class="dek intro">This list collects films and TV series adapted from (often longform) journalism: newspaper stories, magazine features, columns and essays, plus a few short stories. Each entry links the original article and an archived copy, then the adaptation's pages on Wikipedia, IMDb and Rotten Tomatoes. An adaptation counts as journalism when its story first ran in a newspaper or magazine, even if the credits name a later book.</p>
 <div class="controls">
 <input type="search" placeholder="Filter: film, headline, author, outlet, note…" aria-label="Filter rows">
 <span class="count" aria-live="polite">{shown} articles</span>
@@ -516,7 +519,7 @@ footer p + p {{ margin-top: 8px; }}
 
 <section id="tab-sources" class="tab">
 <div class="dek">
-<p>This list collects films and TV series adapted from journalism: newspaper stories, magazine features, columns and essays, plus a few short stories. Each entry links the original article and an archived copy, then the adaptation's pages on Wikipedia, IMDb and Rotten Tomatoes. An adaptation counts as journalism when its story first ran in a newspaper or magazine, even if the credits name a later book. Published lists seeded the collection, and the table below counts what each one contributed.</p>
+<p>Published lists seeded this collection, and the table below names each one and counts what it contributed. Wikidata, IMDb and Rotten Tomatoes supplied the years, ratings and links, and the figures further down summarize the result.</p>
 <p>For adaptations of books, see <a href="https://booktomovies.com/">booktomovies.com</a>.</p>
 </div>
 <section>
