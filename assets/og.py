@@ -17,7 +17,7 @@ h1{font-size:76px;line-height:1.02;letter-spacing:-.02em;margin:0;font-weight:70
 p{font-size:30px;line-height:1.3;color:#9a9a96;margin:28px 0 0}
 p b{color:#24cb71;font-weight:700}
 </style></head><body><div class="wrap">
-<svg viewBox="15 5 70 90"><g fill="none" stroke-width="3" stroke-linejoin="miter" stroke-linecap="square">
+<svg viewBox="15 5 70 90"><g fill="none" stroke-width="4.5" stroke-linejoin="miter" stroke-linecap="square">
 <path stroke="#24cb71" d="M18 8H60L82 30V92H18Z"/><path stroke="#24cb71" d="M60 8V30H82"/>
 <path stroke="#e870ed" d="M28 45H58V75H28Z"/>
 <path stroke="#fbda00" stroke-linecap="butt" d="M57.5 52.25L72 45V75L57.5 67.75"/></g></svg>
