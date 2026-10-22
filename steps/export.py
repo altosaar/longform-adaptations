@@ -79,6 +79,15 @@ def link(text, url) -> str:
     return f'<a href="{e(url)}">{e(text)}</a>' if url else e(text)
 
 
+def numbered(field: str) -> str:
+    """Pipe-separated "url[ archive_url]" entries as [1, 2 (Archive)]."""
+    items = []
+    for i, entry in enumerate(field.split("|"), 1):
+        url, _, archive = entry.strip().partition(" ")
+        items.append(link(str(i), url) + (f' ({link("Archive", archive.strip())})' if archive.strip() else ""))
+    return f'[{", ".join(items)}]'
+
+
 def money(v) -> str:
     if v is None:
         return ""
@@ -204,8 +213,13 @@ def row_html(r: dict, same_film: bool = False, score: float | None = None) -> st
         archive += f' ({link("Google Translate", translate)})'
     lines = [r["source_author"], r["publication_normalized"] or r["publication"], r["source_date"],
              f'also: {" · ".join(aliases)}' if aliases else ""]
-    article = (f'<b>{link(r["source_title"] or "(title unknown)", r["source_url"])}</b>{search}{archive}'
-               + "".join(f'<span class="line">{e(x)}</span>' for x in lines if x) + notes_html(r, none))
+    if r["source_clips"]:
+        title = f'{e(r["source_title"] or "Clips")} {numbered(r["source_clips"])}'
+    else:
+        title = link(r["source_title"] or "(title unknown)", r["source_url"])
+    refs = f'<span class="line">references {numbered(r["source_references"])}</span>' if r["source_references"] else ""
+    article = (f'<b>{title}</b>{search}{archive}'
+               + "".join(f'<span class="line">{e(x)}</span>' for x in lines if x) + refs + notes_html(r, none))
     medium = f' · {e(label(r["medium"]))}' if r["medium"] and r["medium"] != "film" else ""
     director = f' · {e(r["director"])}' if r["director"] else ""
     same = '<span class="line">↳ same film, another source</span>' if same_film else ""

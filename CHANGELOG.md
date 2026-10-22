@@ -18,6 +18,11 @@
   the October 2005 piece). Two second-source rows were deleted by hand, each id redirected to the
   kept row: Sing Sing / "Breakin' the Mummy's Code" (the play) and Live Free or Die Hard /
   "Nothing Lasts Forever" (the 1979 novel behind the first Die Hard).
+- **Clips and references.** New `source_clips` (several articles behind one row; the title
+  shows [1, 2]) and `source_references` (shown as "references [1, 2]", each with an optional
+  archive). *A Nightmare on Elm Street* (1984) now cites the 1981 and 1983 Los Angeles Times
+  clips; the 1987 story it used to cite postdates the film and is now a reference, with
+  History.com's account.
 - **Sources** (formerly Statistics) starts with a table of every seed list URL, with how many
   rows each listed and how many of those are journalism.
 

@@ -30,6 +30,8 @@ COLUMNS: list[tuple[str, str]] = [
     ("source_url", "TEXT"),
     ("source_url_origin", "TEXT"),  # seed | search | manual: who supplied source_url
     ("source_language", "TEXT"),  # ISO 639-1 code of a non-English source (hr); the page links a translation
+    ("source_clips", "TEXT"),  # several articles behind one row, pipe-separated URLs: the title shows [1, 2]
+    ("source_references", "TEXT"),  # pipe-separated "url[ archive_url]" entries backing the row: references [1, 2]
     ("archive_url", "TEXT"),
     ("archive_status", "TEXT"),
     ("wikipedia_url", "TEXT"),

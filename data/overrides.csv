@@ -73,3 +73,11 @@ Paycheck,Paycheck,source_url_origin,manual,
 On the Waterfront,Crime on the Waterfront,source_url,https://www.amazon.com/dp/1596090138,"no online copy; collected in On the Waterfront: The Pulitzer Prize-Winning Articles That Inspired the Classic Film (Malcolm Johnson)"
 On the Waterfront,Crime on the Waterfront,source_url_origin,manual,
 Ghulam,,director,Vikram Bhatt,"Wikidata P57 also names the producer, Mukesh Bhatt; Wikipedia credits Vikram Bhatt alone"
+A Nightmare on Elm Street,,source_title,Los Angeles Times clips,"the 1984 film predates the 1987 story (now a reference), so the earlier clips are the source"
+A Nightmare on Elm Street,,source_url,https://documents.latimes.com/mysterious-fatal-malady-striking-hmong-men/,the first clip
+A Nightmare on Elm Street,,source_clips,https://documents.latimes.com/mysterious-fatal-malady-striking-hmong-men/|https://misterbulger.com/wp-content/uploads/2015/09/laotianarticle4.pdf,"Mysterious fatal malady striking Hmong men (1981-07-14, unbylined); Night Deaths of Asian Men Unexplained by Karl Schoenberger (1983-07-10)"
+A Nightmare on Elm Street,,source_references,https://www.history.com/articles/nightmare-on-elm-street-real-inspiration-hmong-death|https://www.latimes.com/archives/la-xpm-1987-01-11-mn-3961-story.html https://web.archive.org/web/20190917105717/https://www.latimes.com/archives/la-xpm-1987-01-11-mn-3961-story.html,"History.com on the film's inspiration; Larry Doyle's 1987 LA Times story, the row's former source"
+A Nightmare on Elm Street,,source_author,,the 1981 clip is unbylined; the 1983 one is by Karl Schoenberger
+A Nightmare on Elm Street,,source_date,"1981-07-14, 1983-07-10",the two clips' dates
+A Nightmare on Elm Street,,archive_url,,the old snapshot is the 1987 story's; it moved to the references
+A Nightmare on Elm Street,,archive_status,manual,keeps the archive step from replacing the clips with one snapshot
