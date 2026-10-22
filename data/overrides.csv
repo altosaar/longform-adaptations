@@ -55,3 +55,12 @@ Money for Nothing,Finders Keepers,source_url,https://dsc.duq.edu/cgi/viewcontent
 Money for Nothing,Finders Keepers,source_url_origin,manual,
 The Six Triple Eight,Fighting a Two-Front War,source_url,https://warfarehistorynetwork.com/article/wac-corporal-lena-derriecott-and-the-6888th-central-postal-battalion/,Warfare History Network (tracking parameters dropped)
 The Six Triple Eight,Fighting a Two-Front War,source_url_origin,manual,
+Joe vs. Carole,,source_title,Joe Exotic: A Dark Journey Into the World of a Man Gone Wild,"replaces Moor's 'American Animals' (New York, 2019), which stays on the Tiger King row"
+Joe vs. Carole,,source_author,Leif Reigstad,
+Joe vs. Carole,,publication,Texas Monthly,
+Joe vs. Carole,,publication_normalized,Texas Monthly,
+Joe vs. Carole,,source_date,2019-05-13,the page's article:published_time
+Joe vs. Carole,,source_url,https://www.texasmonthly.com/true-crime/joe-exotic-a-dark-journey-into-the-world-of-a-man-gone-wild/,
+Joe vs. Carole,,source_url_origin,manual,
+Joe vs. Carole,,source_chain,article → series,
+Joe vs. Carole,,classify_notes,"Hand-set source: Leif Reigstad's Texas Monthly feature (May 13, 2019), in place of the seed's 'American Animals' by Robert Moor.",
