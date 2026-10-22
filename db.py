@@ -43,6 +43,7 @@ COLUMNS: list[tuple[str, str]] = [
     ("box_office_usd", "INTEGER"),
     ("box_office_note", "TEXT"),
     ("medium", "TEXT"),  # film | scripted_series | docuseries | tv_movie
+    ("director", "TEXT"),  # Wikidata P57, else OMDb; several joined by ", "
     ("source_chain", "TEXT"),  # e.g. "article → podcast → series"
     ("synopsis", "TEXT"),  # one sentence
     ("synopsis_source", "TEXT"),  # imdb | rotten_tomatoes | wikipedia_generated | article_generated

@@ -39,7 +39,7 @@ rows are left alone), and takes `--limit N`. In pipeline order:
 | --- | --- | --- |
 | collect | `just collect [--seed NAME] [--tv]` | Runs each parser in `seeds/` (raw pages cached under `raw/<seed>/`); hygiene rules exclude rows for good (`excluded` table) |
 | fill | `just fill` | Haiku (`FillGaps`) reads missing film/author/outlet out of each seed's own text; fiction podcasts are dropped and podcasts traced to a print origin |
-| enrich | `just enrich` | Wikipedia → Wikidata: IMDb ID, **medium (P31/P136) and year (P577, else P580)**, box office; IMDb rating and votes; Rotten Tomatoes page, Tomatometer and review count; OMDb fallbacks |
+| enrich | `just enrich` | Wikipedia → Wikidata: IMDb ID, **medium (P31/P136) and year (P577, else P580)**, director (P57, else OMDb), box office; IMDb rating and votes; Rotten Tomatoes page, Tomatometer and review count; OMDb fallbacks |
 | classify | `just classify [--refresh]` | Runs `just test`, then one `ClassifyAdaptation` call per row: source, origin and credited types, chain; scope only as a suggestion for outlets missing from the table |
 | origin | `just origin` | Traces credited books to the article they grew out of: same-film/same-author lookup, then one `TraceOrigin` web search; the row then describes the print origin |
 | dedupe | `just dedupe` | One row per (film_qid, origin work); alternate titles go to `source_aliases`, old ids to `aliases` |

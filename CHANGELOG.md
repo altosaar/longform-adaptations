@@ -9,7 +9,7 @@
   Philip K. Dick, Stephen King and the rest —, podcasts and unsourced rows are in the CSV only). The columns are Article, Film Adaptation,
   IMDb rating, IMDb votes, RT Critics Score, RT reviews and box office. Origin, credit, scope,
   fidelity, chain, seeds, flags and the classifier note moved into an **AI Notes** popover.
-  Search is the only filter. Below 960px each row becomes a card, so nothing scrolls sideways.
+  Search is the only filter. Each title shows its year · director (Wikidata P57, else OMDb). Below 960px each row becomes a card, so nothing scrolls sideways.
 - **Default order: a score (/100).** IMDb rating and Tomatometer are each shrunk toward the
   table mean by vote / review count (IMDb's weighted rating, m = median count), turned into
   percentiles, and averaged with RT counted twice.

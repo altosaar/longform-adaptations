@@ -170,7 +170,7 @@ def _labels(qids: set[str]) -> dict[str, str]:
     for i in range(0, len(ids), 50):
         d = _wd(action="wbgetentities", ids="|".join(ids[i : i + 50]), props="labels", languages="en")
         for q, e in d.get("entities", {}).items():
-            out[q] = e.get("labels", {}).get("en", {}).get("value", "").lower()
+            out[q] = e.get("labels", {}).get("en", {}).get("value", "")
     return out
 
 
@@ -204,7 +204,7 @@ def link_entities(con, rows: list[dict]) -> None:
         entities |= d.get("entities", {})
     classes = {c["mainsnak"]["datavalue"]["value"]["id"] for e in entities.values()
                for p in ("P31", "P136") for c in _claims(e, p)}
-    class_label = _labels(classes)
+    class_label = {q: v.lower() for q, v in _labels(classes).items()}
     for qid, e in entities.items():
         imdb = next((c["mainsnak"]["datavalue"]["value"] for c in _claims(e, "P345")
                      if str(c["mainsnak"]["datavalue"]["value"]).startswith("tt")), None)
@@ -238,6 +238,27 @@ def link_entities(con, rows: list[dict]) -> None:
                 con.execute(f"UPDATE adaptations SET {', '.join(f'{k} = ?' for k in authoritative)} WHERE id = ?",
                             [*authoritative.values(), r["id"]])
             r.update({k: (r[k] or v) for k, v in values.items()} | authoritative)
+    con.commit()
+
+
+def link_directors(con, rows: list[dict]) -> None:
+    """Director names from Wikidata (P57, in the item's order), else OMDb's Director field."""
+    todo = [r for r in rows if not r["director"]]
+    qids = sorted({r["wikidata_qid"] for r in todo if r["wikidata_qid"]})
+    people: dict[str, list[str]] = {}
+    for i in range(0, len(qids), 50):
+        d = _wd(action="wbgetentities", ids="|".join(qids[i : i + 50]), props="claims")
+        for q, e in d.get("entities", {}).items():
+            people[q] = [c["mainsnak"]["datavalue"]["value"]["id"] for c in _claims(e, "P57")
+                         if c.get("rank") != "deprecated"]
+    name = _labels({p for ps in people.values() for p in ps})
+    for r in todo:
+        names = [name[p] for p in people.get(r["wikidata_qid"], []) if name.get(p)]
+        if not names:
+            omdb_names = omdb(r["imdb_id"]).get("Director") or ""
+            names = [n.strip() for n in omdb_names.split(",") if n.strip() and omdb_names != "N/A"]
+        if names:
+            db.fill(con, r["id"], {"director": ", ".join(names)})
     con.commit()
 
 
@@ -380,6 +401,7 @@ def main() -> None:
     link_qids(con, rows)
     link_entities(con, rows)
     link_imdb_by_title(con, db.rows(con, limit=a.limit))
+    link_directors(con, db.rows(con, limit=a.limit))
     rows = db.rows(con, limit=a.limit)
     link_ratings(con, rows, a.force)
     link_rt(con, db.rows(con, limit=a.limit))

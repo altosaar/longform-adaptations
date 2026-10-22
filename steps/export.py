@@ -207,9 +207,10 @@ def row_html(r: dict, same_film: bool = False, score: float | None = None) -> st
     article = (f'<b>{link(r["source_title"] or "(title unknown)", r["source_url"])}</b>{search}{archive}'
                + "".join(f'<span class="line">{e(x)}</span>' for x in lines if x) + notes_html(r, none))
     medium = f' · {e(label(r["medium"]))}' if r["medium"] and r["medium"] != "film" else ""
+    director = f' · {e(r["director"])}' if r["director"] else ""
     same = '<span class="line">↳ same film, another source</span>' if same_film else ""
     film = (f'{same}<b>{link(r["film_title"] or "(film unknown)", r["wikipedia_url"])}</b>'
-            f'<span class="line">{e(r["film_year"])}{medium}</span>{synopsis_html(r)}'
+            f'<span class="line">{e(r["film_year"])}{director}{medium}</span>{synopsis_html(r)}'
             f'<span class="line">{title_links(r)}</span>')
     nums = [
         ("Score (/100)", f"{score:.0f}" if score is not None else ""),
