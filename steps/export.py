@@ -32,6 +32,9 @@ JOURNALISM = db.JOURNALISM  # positives are counted by origin_type (Addendum 2 #
 VERSION = "v0.1"
 EVAL_PATH = db.ROOT / "eval.json"
 IMDB_PAGES = db.ROOT / "data" / "imdb_pages.json"
+SITE = "https://longformadaptations.jaan.io/"  # canonical URL; the justfile's `site` too
+DESCRIPTION = ("Films and TV series adapted from newspaper and magazine journalism, each linked to its "
+               "source article, an archived copy, IMDb and Rotten Tomatoes.")
 LOCALISH = ("local", "alt_weekly", "regional")
 QUEUE_SQL = ("reviewed = 0 AND (imdb_id IS NULL OR ((archive_status = 'none' OR archive_status IS NULL) "
              "AND COALESCE(source_type, '') NOT IN ('book', 'short_fiction', 'podcast_or_other')))")
@@ -319,7 +322,15 @@ def render(rows: list[dict]) -> str:
     records = [{k: r[k] for k in db.NAMES if k != "seed_context"} for r in rows]
     payload = json.dumps(records, ensure_ascii=False).replace("</", "<\\/")
     favicon = "data:image/svg+xml," + ICON.replace("currentColor", "black").replace('"', "'").replace("#", "%23")
+    jsonld = json.dumps({
+        "@context": "https://schema.org", "@type": "Dataset", "name": "List of Longform Adaptations",
+        "description": DESCRIPTION, "url": SITE, "dateModified": date.today().isoformat(),
+        "keywords": ["film adaptations", "journalism", "magazine articles", "newspaper articles", "longform"],
+        "distribution": [{"@type": "DataDownload", "encodingFormat": "text/csv",
+                          "contentUrl": f"{SITE}data/adaptations.csv"}],
+    }, ensure_ascii=False).replace("</", "<\\/")
     return TEMPLATE.format(
+        site=SITE, description=e(DESCRIPTION), jsonld=jsonld,
         today=date.today().isoformat(), n=n, stats=stat_html, sources=sources_table(rows),
         icon=ICON, favicon=e(favicon),
         b_type=breakdown("Origin type", types, n), b_credited=breakdown("Credited source", credited, n),
@@ -354,17 +365,22 @@ TEMPLATE = """<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Longform Adaptations</title>
+<title>List of Longform Adaptations</title>
+<meta name="description" content="{description}">
+<link rel="canonical" href="{site}">
 <script>
 // Light unless the reader chose dark (not the OS setting): set before first paint
 try {{ if (localStorage.getItem("theme") === "dark") document.documentElement.dataset.theme = "dark"; }} catch {{}}
 </script>
 <link rel="icon" href="{favicon}" type="image/svg+xml">
-<meta property="og:title" content="Longform Adaptations">
+<meta property="og:title" content="List of Longform Adaptations">
+<meta property="og:description" content="{description}">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://longformadaptations.pages.dev/">
-<meta property="og:image" content="https://longformadaptations.pages.dev/icon.svg">
+<meta property="og:url" content="{site}">
+<meta property="og:image" content="{site}icon.svg">
 <meta property="og:image:type" content="image/svg+xml">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{jsonld}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
@@ -472,7 +488,7 @@ footer p + p {{ margin-top: 8px; }}
 </head>
 <body>
 <header class="top">
-<a class="brand" href="#articles">{icon}<span>Longform Adaptations</span></a>
+<a class="brand" href="#articles">{icon}<h1>Longform Adaptations</h1></a>
 <nav class="tabs" aria-label="Tabs"><a href="#articles" data-tab="articles">Articles</a><a href="#sources" data-tab="sources">Sources</a><button class="theme-toggle" type="button" aria-pressed="false">Dark</button></nav>
 <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span class="menu-icon" aria-hidden="true"><i></i><i></i></span></button>
 </header>
@@ -497,8 +513,8 @@ footer p + p {{ margin-top: 8px; }}
 
 <section id="tab-sources" class="tab">
 <div class="dek">
-<p>Every film or series named in the lists below, linked to Wikipedia, Wikidata, IMDb and Rotten Tomatoes, with an archived copy of the source. A row counts as journalism by its origin, the first publication in the chain, whatever the credits name; books, short fiction and podcasts are kept as labeled negatives.</p>
-<p>For book adaptations, see <a href="https://booktomovies.com/">booktomovies.com</a>.</p>
+<p>This list collects films and TV series adapted from journalism: newspaper stories, magazine features, columns and essays, plus a few short stories. Each entry links the original article and an archived copy, then the adaptation's pages on Wikipedia, IMDb and Rotten Tomatoes. An adaptation counts as journalism when its story first ran in a newspaper or magazine, even if the credits name a later book. Published lists seeded the collection, and the table below counts what each one contributed.</p>
+<p>For adaptations of books, see <a href="https://booktomovies.com/">booktomovies.com</a>.</p>
 </div>
 <section>
 <h2>Seed lists</h2>

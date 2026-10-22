@@ -11,12 +11,17 @@ Scope comes from `data/publications.csv`, medium and year from Wikidata, fidelit
 wording, merges from titles and authors; Haiku fills blanks and explains chains.
 
 Outputs: `longhorns.sqlite` (table `adaptations`), `adaptations.csv`, `adaptations.html`
-(the review page at https://longformadaptations.pages.dev: an Articles tab listing journalism,
+(the review page at https://longformadaptations.jaan.io, also longformadaptations.pages.dev: an Articles tab listing journalism,
 local and short-fiction rows by score, and a Sources tab at `/#sources`), and `eval.json`.
 
 Deploys are automatic: every push to `main` runs `.github/workflows/deploy.yml`, which tests,
 re-exports the page from the committed `longhorns.sqlite` and deploys it (`just publish`). The
 pipeline itself runs on a laptop (it needs `.env` and `raw/`); commit its outputs to ship them.
+
+Outside this repo: `longformadaptations.jaan.io` is a custom domain on the `longformadaptations`
+Pages project, added through the Pages API (Wrangler has no domains command), with a proxied
+CNAME `longformadaptations` → `longformadaptations.pages.dev` in the `jaan.io` zone. The page's
+canonical URL is that domain (`SITE` in steps/export.py, `site` in the justfile).
 
 ## Run
 

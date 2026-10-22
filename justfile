@@ -103,11 +103,16 @@ queue:
 lint:
     uv run ruff check .
 
-# Publish the review page to longformadaptations.pages.dev (Cloudflare Pages; wrangler.jsonc): page + CSV
+# The canonical URL (steps/export.py SITE too)
+site := "https://longformadaptations.jaan.io/"
+
+# Publish the review page to longformadaptations.jaan.io (also longformadaptations.pages.dev) (Cloudflare Pages; wrangler.jsonc): page + CSV
 publish: export
     rm -rf dist && mkdir -p dist/data/v0.1
     cp adaptations.html dist/index.html
     sed 's/currentColor/black/' assets/icon.svg > dist/icon.svg
+    printf 'User-agent: *\nAllow: /\nSitemap: {{site}}sitemap.xml\n' > dist/robots.txt
+    printf '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{{site}}</loc><lastmod>%s</lastmod></url></urlset>\n' "$(date +%F)" > dist/sitemap.xml
     cp adaptations.csv dist/adaptations.csv
     for d in dist/data dist/data/v0.1; do cp adaptations.csv data/publications.csv data/gold.csv eval.json CHANGELOG.md $d/; done
     # --force: create a classic Pages project (pages.dev); newer wrangler otherwise makes a Worker
