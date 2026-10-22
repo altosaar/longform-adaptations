@@ -392,9 +392,9 @@ try {{ if (localStorage.getItem("theme") === "dark") document.documentElement.da
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root, :root[data-theme="light"] {{ color-scheme: light; --ink: #000; --paper: #fff; --icon-doc: #1b9955; --icon-cam: #df37e6; --icon-lens: #9a8600; }}
+:root, :root[data-theme="light"] {{ color-scheme: light; --ink: #000; --paper: #fff; --icon-doc: #1b9955; --icon-cam: #df37e6; --icon-lens: #9a8600; --accent: #18864a; }}
 /* Dark is jaan.io's palette (src/styles/tokens.css): --bg, --text, and the icon in --accent green, pink and yellow; light uses darker shades of those hues (3.6:1 on white) */
-:root[data-theme="dark"] {{ color-scheme: dark; --ink: #e2e2e2; --paper: #000; --icon-doc: #24cb71; --icon-cam: #e870ed; --icon-lens: #fbda00; }}
+:root[data-theme="dark"] {{ color-scheme: dark; --ink: #e2e2e2; --paper: #000; --icon-doc: #24cb71; --icon-cam: #e870ed; --icon-lens: #fbda00; --accent: #24cb71; }}
 :root {{ --m: 16px; --s: 13px; --rule: 2px solid var(--ink); --hair: 1px solid var(--ink); --nav-h: 52px; }}
 * {{ box-sizing: border-box; }}
 [hidden] {{ display: none !important; }}
@@ -403,7 +403,6 @@ body {{ margin: 0; background: var(--paper); color: var(--ink); font: 400 var(--
 h1, h2, h3, p, dl, dd {{ margin: 0; font-size: inherit; }}
 h2, h3, b, dt, th {{ font-weight: 700; }}
 a {{ color: inherit; text-decoration-thickness: 1px; text-underline-offset: 2px; }}
-a:hover {{ background: var(--ink); color: var(--paper); text-decoration: none; }}
 button, input, select {{ font: inherit; color: var(--ink); }}
 .line {{ display: block; font-size: var(--s); }}
 .url {{ overflow-wrap: anywhere; }}
@@ -413,7 +412,6 @@ header.top {{ display: flex; align-items: center; justify-content: space-between
 .brand svg {{ width: 22px; height: 28px; flex: none; }}
 .tabs {{ display: flex; gap: 24px; }}
 .tabs a, .theme-toggle {{ font-weight: 700; text-decoration: none; padding: 2px 4px; border: 0; background: var(--paper); cursor: pointer; }}
-.theme-toggle:hover {{ background: var(--ink); color: var(--paper); }}
 .tabs a[aria-current="page"] {{ background: var(--ink); color: var(--paper); }}
 main {{ max-width: 1440px; margin: 0 auto; padding: 16px 16px 48px; }}
 
@@ -436,11 +434,9 @@ tr.same td {{ border-top: 0; }}
 sup {{ font-size: var(--s); line-height: 0; }}
 
 .notes {{ display: inline-block; margin-top: 8px; padding: 2px 8px; border: var(--hair); background: var(--paper); font-size: var(--s); font-style: normal; cursor: pointer; }}
-.notes:hover, .notes:focus-visible {{ background: var(--ink); color: var(--paper); }}
 .pop {{ margin: auto; width: min(440px, calc(100vw - 32px)); max-height: min(70vh, 560px); overflow: auto; padding: 12px 16px 16px; border: var(--rule); background: var(--paper); color: var(--ink); font-size: var(--s); font-style: normal; }}
 .pop::backdrop {{ background: transparent; }}
 .pop .x {{ float: right; margin: -4px -8px 0 8px; width: 36px; height: 36px; border: 0; background: var(--paper); font-size: var(--m); font-weight: 700; cursor: pointer; }}
-.pop .x:hover {{ background: var(--ink); color: var(--paper); }}
 .pop dt {{ margin-top: 8px; }}
 .pop dt:first-child {{ margin-top: 0; }}
 
@@ -484,6 +480,14 @@ footer p + p {{ margin-top: 8px; }}
   .menu a {{ display: block; padding: 16px; border-bottom: var(--rule); font-weight: 700; text-decoration: none; }}
   .menu a[aria-current="page"] {{ background: var(--ink); color: var(--paper); }}
 }}
+/* Hover and keyboard focus, as in jaan.io's nav (src/styles/chrome.css .nav-link): the accent
+   fills the link and the text takes the page colour (4.6:1 light, 9.9:1 dark). Last, so it
+   wins over each link's resting background. The logo only underlines: its icon is green too. */
+a, .theme-toggle, .notes, .pop .x {{ transition: background-color 225ms ease, color 225ms ease; }}
+a:hover, a:focus-visible, .tabs a:hover, .tabs a:focus-visible, .menu a:hover, .menu a:focus-visible,
+.theme-toggle:hover, .theme-toggle:focus-visible, .notes:hover, .notes:focus-visible, .pop .x:hover, .pop .x:focus-visible {{
+  background: var(--accent); color: var(--paper); text-decoration: none; outline: none; }}
+.brand:hover, .brand:focus-visible {{ background: none; color: inherit; text-decoration: underline; text-underline-offset: 4px; }}
 /* Hamburger ↔ ✕ */
 .menu-icon {{ position: relative; width: 20px; height: 20px; }}
 .menu-icon i {{ position: absolute; left: 0; right: 0; height: 2px; background: currentColor; transition: transform .3s, top .3s; }}
