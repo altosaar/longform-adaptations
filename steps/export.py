@@ -17,6 +17,7 @@ import re
 from collections import Counter
 from datetime import date
 from statistics import mean, median
+from urllib.parse import quote
 
 import db
 import seeds
@@ -198,6 +199,9 @@ def row_html(r: dict, same_film: bool = False, score: float | None = None) -> st
     classes = " ".join(c for c in ("neg" if neg else "", "same" if same_film else "") if c)
     search = '<sup title="URL found by Haiku web search">*</sup>' if r["source_url_origin"] == "search" else ""
     archive = f' ({link("Archive", r["archive_url"])})' if r["archive_url"] else ""
+    if r["source_language"] and r["source_language"] != "en" and r["source_url"]:
+        translate = f"https://translate.google.com/translate?sl={r['source_language']}&tl=en&u={quote(r['source_url'], safe='')}"
+        archive += f' ({link("Google Translate", translate)})'
     lines = [r["source_author"], r["publication_normalized"] or r["publication"], r["source_date"],
              f'also: {" · ".join(aliases)}' if aliases else ""]
     article = (f'<b>{link(r["source_title"] or "(title unknown)", r["source_url"])}</b>{search}{archive}'

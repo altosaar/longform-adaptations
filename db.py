@@ -29,6 +29,7 @@ COLUMNS: list[tuple[str, str]] = [
     ("source_date", "TEXT"),
     ("source_url", "TEXT"),
     ("source_url_origin", "TEXT"),  # seed | search | manual: who supplied source_url
+    ("source_language", "TEXT"),  # ISO 639-1 code of a non-English source (hr); the page links a translation
     ("archive_url", "TEXT"),
     ("archive_status", "TEXT"),
     ("wikipedia_url", "TEXT"),
