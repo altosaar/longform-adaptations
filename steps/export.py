@@ -391,6 +391,20 @@ TEMPLATE = """<!doctype html>
 // Light unless the reader chose dark (not the OS setting): set before first paint
 try {{ if (localStorage.getItem("theme") === "dark") document.documentElement.dataset.theme = "dark"; }} catch {{}}
 </script>
+<script>
+// GA4, the "jaan.io projects" property shared with the other jaan.io subdomains: only on the real host, so pages.dev and local copies send nothing
+(function () {{
+  if (location.hostname !== "longformadaptations.jaan.io") return;
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () {{ window.dataLayer.push(arguments); }};
+  window.gtag("js", new Date());
+  window.gtag("config", "G-71HTG8TEQ1");
+  var s = document.createElement("script");
+  s.async = true;
+  s.src = "https://www.googletagmanager.com/gtag/js?id=G-71HTG8TEQ1";
+  document.head.appendChild(s);
+}})();
+</script>
 <link rel="icon" href="{favicon}" type="image/svg+xml">
 <meta property="og:title" content="List of Longform Adaptations">
 <meta property="og:description" content="{description}">
