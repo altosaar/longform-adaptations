@@ -340,7 +340,6 @@ def render(rows: list[dict]) -> str:
                                score.get(r["id"])) for i, r in enumerate(listed))
     records = [{k: r[k] for k in db.NAMES if k != "seed_context"} for r in rows]
     payload = json.dumps(records, ensure_ascii=False).replace("</", "<\\/")
-    favicon = "data:image/svg+xml," + ICON.replace('"', "'").replace("#", "%23")
     jsonld = json.dumps({
         "@context": "https://schema.org", "@type": "Dataset", "name": "List of Longform Adaptations",
         "description": DESCRIPTION, "url": SITE, "dateModified": date.today().isoformat(),
@@ -351,7 +350,7 @@ def render(rows: list[dict]) -> str:
     return TEMPLATE.format(
         site=SITE, description=e(DESCRIPTION), jsonld=jsonld,
         today=date.today().isoformat(), n=n, stats=stat_html, sources=sources_table(rows),
-        icon=ICON, favicon=e(favicon),
+        icon=ICON,
         b_type=breakdown("Origin type", types, n), b_credited=breakdown("Credited source", credited, n),
         b_scope=breakdown("Publication scope (journalism)", Counter(r["publication_scope"] for r in journalism),
                           max(1, len(journalism))),
@@ -405,7 +404,9 @@ try {{ if (localStorage.getItem("theme") === "dark") document.documentElement.da
   document.head.appendChild(s);
 }})();
 </script>
-<link rel="icon" href="{favicon}" type="image/svg+xml">
+<link rel="icon" href="{site}icon.svg" type="image/svg+xml">
+<link rel="icon" href="{site}favicon.png" type="image/png" sizes="96x96">
+<link rel="apple-touch-icon" href="{site}apple-touch-icon.png">
 <meta property="og:title" content="List of Longform Adaptations">
 <meta property="og:description" content="{description}">
 <meta property="og:type" content="website">
